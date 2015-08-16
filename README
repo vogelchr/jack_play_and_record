@@ -1,0 +1,36 @@
+jack_play_and_record - Play back a file, and simultaneously record using JACK.
+
+Written by Christian Vogel <vogelchr@vogel.cx> in 2015. This program
+is placed in the public domain to the largest extent possible, I do
+not claim any rights to this code.
+
+To perform measurements on audio circuits, I want to play back a wav file
+(e.g. a sweep tone) and simultaneously record. This small utility does precisely
+that. It's not very pretty, but it works.
+
+This invocation will play back the sweep.wav on the first physical
+output port on the JACK daemon, and will record one channel from the first
+physical input port present on the JACK deamon.
+
+It will wait 96000 samples before it starts playing/recording.
+
+$ ./jack_play_and_record sweep.wav record.wav
+Loaded 576000 samples from sweep.wav.
+Current sample rate is 48000 Hz.
+Jack connected, state is 0, counter is 384
+Jack connected, state is 0, counter is 48384
+Jack connected, state is 1, counter is 96384
+Jack connected, state is 1, counter is 144384
+Jack connected, state is 1, counter is 192384
+Jack connected, state is 1, counter is 240384
+Jack connected, state is 1, counter is 288384
+Jack connected, state is 1, counter is 336384
+Jack connected, state is 1, counter is 384384
+Jack connected, state is 1, counter is 432384
+Jack connected, state is 1, counter is 480512
+Jack connected, state is 1, counter is 528512
+Jack connected, state is 1, counter is 576512
+Jack connected, state is 1, counter is 624512
+
+Currently it doesn't exit cleanly and the jack daemon will complain about
+overruns. Just ignore it. :-).
